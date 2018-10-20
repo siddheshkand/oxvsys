@@ -6,7 +6,7 @@ from django.shortcuts import render
 # Create your views here.
 def home(request):
     messages = ""
-    date = datetime.datetime(year=2018, month=10, day=19) - datetime.datetime.now()
+    date = datetime.datetime(year=2018, month=11, day=1) - datetime.datetime.now()
     if request.method == 'POST':
         messages = "We will contact you soon."
 
