@@ -1,3 +1,136 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-<h1>hello</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Oxvsys</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <style>
+        .navbar-brand img {
+            max-height: 4rem;
+        }
+
+        .navbar {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body id="main-body-content">
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="https://bulma.io">
+            <img src="{% static 'img/fin_text.svg' %}" id="logo">
+        </a>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+           data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item">
+                Home
+            </a>
+
+            <a class="navbar-item">
+                Documentation
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    More
+                </a>
+
+                <div class="navbar-dropdown">
+                    <a class="navbar-item">
+                        About
+                    </a>
+                    <a class="navbar-item">
+                        Jobs
+                    </a>
+                    <a class="navbar-item">
+                        Contact
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item">
+                        Report an issue
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary">
+                        <strong>Sign up</strong>
+                    </a>
+                    <a class="button is-light">
+                        Log in
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container is-fluid">
+
+
+    <div class="notification is-info">
+        <button class="delete"></button>
+        <span class="tag is-warning">
+
+                Warning : Our site isn't ready yet.We are constantly updating it.Sorry for your inconvenience.
+            For any inquires please mail us at <br><a
+                href="mailto:customer@oxvsys@gmail.com"> customer@oxvsys@gmail.com</a>
+
+        </span>
+        <h1 class="title">We provide Customized <strong>automation</strong> solution.
+            <br><i class="subtitle">Webapps, Data Storage, REST API.</i>
+        </h1>
+        <div class="content">
+            <ol type="1">
+                <li>Github: <a href="https://github.com/siddheshkand/">Personal</a></li>
+                <li>Github: <a href="https://github.com/Oxvsys">Organization</a></li>
+                <li>Tech talk survey : <a href="{% static 'Programmer.csv.zip' %}">Become Python Programmer </a></li>
+                <li>Sample work : <a href="http://itsmydesign.in">Its My Design</a></li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Check if there are any navbar burgers
+        if ($navbarBurgers.length > 0) {
+
+            // Add a click event on each of them
+            $navbarBurgers.forEach(el => {
+                el.addEventListener('click', () => {
+
+                    // Get the target from the "data-target" attribute
+                    const target = el.dataset.target;
+                    const $target = document.getElementById(target);
+
+                    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                    el.classList.toggle('is-active');
+                    $target.classList.toggle('is-active');
+
+                });
+            });
+        }
+
+    });
+</script>
+</html>

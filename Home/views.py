@@ -16,7 +16,7 @@ def home(request):
     print(days)
     print(hours)
     print(minutes)
-    return render(request, 'Home/index.html', {
+    return render(request, 'Home/home.html', {
         'messages': messages,
         'days': days,
         'hours': hours,
