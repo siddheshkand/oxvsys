@@ -15,97 +15,180 @@
         .navbar {
             padding: 20px;
         }
+
+        .main-content {
+            background: linear-gradient(to right, rgba(142, 45, 226, 0.8), rgba(74, 0, 224, 0.8)), url("https://cdn.lynda.com/course/661768/661768-636555165684068294-16x9.jpg");
+        {#background-image: url("https://cdn.lynda.com/course/661768/661768-636555165684068294-16x9.jpg");#}{#background-image:linear-gradient(to right bottom, rgba(126,213,111,0.8), rgba(40,180,133,0.8)),url(../img/hero-small.jpg);#}
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        .main-content {
+            height: 100%;
+            min-height: 100%; /*for mozilla*/
+        }
+
+        html > body .main-content {
+            height: auto;
+        }
+
+        .navbar {
+            color: white;
+            border-width: 0;
+            -webkit-box-shadow: 0 0;
+            box-shadow: 0 0;
+            background-color: rgba(0, 0, 0, 0.0);
+            background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop(0%, rgba(0, 0, 0, 0.00)), color-stop(100%, rgba(0, 0, 0, 0.00)));
+            background-image: -webkit-linear-gradient(270deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.00) 100%);
+            background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.00) 100%);
+        }
+
+        .navbar-item, .navbar-link {
+            color: white;
+        }
+
+        .navbar-link.is-active, .navbar-link:hover, a.navbar-item.is-active, a.navbar-item:hover {
+            background-color: rgba(0, 0, 0, 0.0);
+        }
+
+        .navbar .is-hoverable:hover {
+            background-color: rgba(0, 0, 0, 0.0);
+        }
+
+        .is-fixed-top.scrolled {
+            color: #555;
+            background: linear-gradient(to right, rgba(142, 45, 226, 1), rgba(74, 0, 224, 1));
+            transition: all 0.5s ease-in;
+        }
     </style>
 </head>
-<body id="main-body-content">
-<nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
-            <img src="{% static 'img/fin_text.svg' %}" id="logo">
-        </a>
-
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-           data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </a>
-    </div>
-
-    <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-            <a class="navbar-item">
-                Home
+<body>
+<header id="particles-js">
+    <nav class="navbar is-transparent is-fixed-top" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://bulma.io">
+                <img src="{% static 'img/fin_text.svg' %}" id="logo">
             </a>
 
-            <a class="navbar-item">
-                Documentation
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+               data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
             </a>
+        </div>
 
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">
-                    More
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item">
+                    Home
                 </a>
 
-                <div class="navbar-dropdown">
-                    <a class="navbar-item">
-                        About
+                <a class="navbar-item">
+                    Documentation
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More
                     </a>
-                    <a class="navbar-item">
-                        Jobs
-                    </a>
-                    <a class="navbar-item">
-                        Contact
-                    </a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item">
-                        Report an issue
-                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            About
+                        </a>
+                        <a class="navbar-item">
+                            Jobs
+                        </a>
+                        <a class="navbar-item">
+                            Contact
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item">
+                            Report an issue
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary">
+                            <strong>Sign up</strong>
+                        </a>
+                        <a class="button is-light">
+                            Log in
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="navbar-end">
-            <div class="navbar-item">
-                <div class="buttons">
-                    <a class="button is-primary">
-                        <strong>Sign up</strong>
-                    </a>
-                    <a class="button is-light">
-                        Log in
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
-<div class="container is-fluid">
+    </nav>
+</header>
+<div class="main-content">
 
 
-    <div class="notification is-info">
-        <button class="delete"></button>
-        <span class="tag is-warning">
-
-                Warning : Our site isn't ready yet.We are constantly updating it.Sorry for your inconvenience.
-            For any inquires please mail us at <br><a
-                href="mailto:customer@oxvsys@gmail.com"> customer@oxvsys@gmail.com</a>
-
-        </span>
-        <h1 class="title">We provide Customized <strong>automation</strong> solution.
-            <br><i class="subtitle">Webapps, Data Storage, REST API.</i>
-        </h1>
-        <div class="content">
-            <ol type="1">
-                <li>Github: <a href="https://github.com/siddheshkand/">Personal</a></li>
-                <li>Github: <a href="https://github.com/Oxvsys">Organization</a></li>
-                <li>Tech talk survey : <a href="{% static 'Programmer.csv.zip' %}">Become Python Programmer </a></li>
-                <li>Sample work : <a href="http://itsmydesign.in">Its My Design</a></li>
-            </ol>
-        </div>
-    </div>
 </div>
-
+<section class="section">
+    <div class="container">
+        <h1 class="title">Section</h1>
+        <h2 class="subtitle">
+            A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
+        </h2>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <h1 class="title">Section</h1>
+        <h2 class="subtitle">
+            A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
+        </h2>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <h1 class="title">Section</h1>
+        <h2 class="subtitle">
+            A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
+        </h2>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <h1 class="title">Section</h1>
+        <h2 class="subtitle">
+            A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
+        </h2>
+    </div>
+</section>
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
+</footer>
 </body>
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+<script>
+    $(function () {
+        $(document).scroll(function () {
+            var $nav = $(".is-fixed-top");
+            $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+        });
+    });
+</script>
+
 <script>
     document.addEventListener('DOMContentLoaded', () => {
 
@@ -133,4 +216,6 @@
 
     });
 </script>
+
+
 </html>
