@@ -8,10 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Oxvsys</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
 
     <style>
         /*Style to make header section take full screen of page*/
         html, body {
+            font-family: 'Nunito', sans-serif;
+
             height: 100%;
             margin: 0;
         }
@@ -87,13 +91,27 @@
         .hero-img {
         }
 
+        .navbar-burger {
+            color: white;
+        }
+
+        {#for mobile screen #}
         @media screen and (max-width: 1088px) {
             .hero-img {
                 visibility: hidden;
             }
 
+            .container.is-fluid .columns .column {
+                font-size: .8rem;
+            }
+
             .container.is-fluid .columns {
                 padding: 15px;
+
+            }
+
+            .subtitle.is-4 {
+                font-size: 1.2rem;
             }
         }
 
