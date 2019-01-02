@@ -24,7 +24,7 @@ SECRET_KEY = 'bzi%4j$%=2!c9db!wz6@evj@@)+8810*#qr(%=qy#fp!p%uczt'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['oxvsys.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['oxvsys.pythonanywhere.com', '127.0.0.1', '*']
 
 # Application definition
 
