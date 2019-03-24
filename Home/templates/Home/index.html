@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          content="width=device-width, user-scalable=no, initial-scale=1.5, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Oxvsys</title>
     <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}">
@@ -120,9 +120,10 @@
 
         {#for mobile screen #}
         @media screen and (max-width: 1088px) {
-            #developer-image{
+            #developer-image {
                 display: none;
             }
+
             .hero-img {
                 width: 80%;
             }
@@ -240,7 +241,7 @@
                 </a>
 
                 <a class="navbar-item">
-                    Documentation
+                    Blog
                 </a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
@@ -249,13 +250,13 @@
                     </a>
 
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            About
-                        </a>
-                        <a class="navbar-item">
-                            Jobs
-                        </a>
-                        <a class="navbar-item">
+                        {#                        <a class="navbar-item" href="">#}
+                        {#                            About#}
+                        {#                        </a>#}
+                        {#                        <a class="navbar-item">#}
+                        {#                            Jobs#}
+                        {#                        </a>#}
+                        <a class="navbar-item" href="#contact">
                             Contact
                         </a>
                         <hr class="navbar-divider">
@@ -266,11 +267,11 @@
                 </div>
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-primary">
-                            <strong>Sign up</strong>
-                        </a>
+                        {#                        <a class="button is-primary">#}
+                        {#                            <strong>Sign up</strong>#}
+                        {#                        </a>#}
                         <a class="button is-light">
-                            Log in
+                            Wait for more
                         </a>
                     </div>
                 </div>
@@ -297,8 +298,8 @@
 
                     <h1 class="subtitle is-4">
                         ⨂ <span>Automation</span> <br>
-                        ⨂ <span>Cloud Computing</span> <br>
-                        ⨂ <span>Data Storage</span>
+                        ⨂ <span>Computer Vision</span> <br>
+                        ⨂ <span>Data Analytics</span>
                     </h1>
                 </div>
                 <div class="column has-text-centered" id="developer-image">
@@ -369,7 +370,7 @@
                             <div class="content">
                                 The Coriander leaf, your new premium food restro bar. We know you're always busy. No
                                 time for cooking.
-                                <a href=""><b>@store.corianderLeaf.in</b></a>.
+                                <a href="http://www.thecorianderleaf.in/"><b>@store.corianderLeaf.in</b></a>.
                                 <a href="">#pwa_app</a> <a href="#"></a>
                                 <a href="">#js</a> <a href="#"></a>
                                 <br>
@@ -423,7 +424,7 @@
             <strong>Oxvsys</strong>
             <strong>© 2018</strong> <br>
         </p>
-        <div class="container">
+        <div class="container" id="contact">
             <div class=""><img src="{% static 'img/mail.png' %}" alt="" width="50px"></div>
             <div class=""><a href="mailto:customer.oxvsys@gmail.com">customer@oxvsys.com</a></div>
         </div>
@@ -453,7 +454,7 @@
     $(function () {
         $(document).scroll(function () {
             var $nav = $(".is-fixed-top");
-            $nav.toggleClass('scrolled', $(this).scrollTop()+50 > $nav.height());
+            $nav.toggleClass('scrolled', $(this).scrollTop() + 50 > $nav.height());
         });
     });
 </script>
