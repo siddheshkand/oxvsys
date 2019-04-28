@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', views.home),
     url(r'^msc/comp_sci/dip$', views.dip, name='dip'),
+    url(r'^msc/comp_sci/aos$', views.aos, name='aos'),
 
 ]
