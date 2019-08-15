@@ -539,21 +539,28 @@
             opacity: 0;
         }
 
+        .image.is-2by1 {
+            padding-top: 10%;
+        }
+
+
         @media screen and (max-width: 1088px) {
             .carousel-item {
                 flex-basis: calc(100%) !important;
                 left: 4.5rem;
             }
-            .description-project{
+
+            .description-project {
                 height: 3rem;
+            }
+
+            .image.is-2by1 {
+                padding-top: 0;
             }
         }
     </style>
     {#    bulma overrides #}
     <style>
-        .image.is-2by1 {
-            padding-top: 10%;
-        }
 
 
         .overlay {
