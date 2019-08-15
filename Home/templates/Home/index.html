@@ -22,21 +22,16 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'fav/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="96x96" href="{% static 'fav/favicon-96x96.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'fav/favicon-16x16.png' %}">
+    <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     <link rel="manifest" href="{% static 'fav/manifest.json' %}">
     <meta name="msapplication-TileColor" content="#8E2DE2">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#8E2DE2">
     <style>
-        @font-face {
-            font-family: 'Nunito';
-            src: url({% static 'fonts/Nunito-Regular.ttf' %});
-        }
-    </style>
-
-    <style>
         /*Style to make header section take full screen of page*/
         html, body {
-            font-family: 'Nunito', sans-serif;
+            font-family: 'Space Mono', sans-serif;
 
             height: 100%;
             margin: 0;
@@ -164,7 +159,7 @@
         }
 
         .form-sec {
-            display: none;
+        {#display: none;#}
         }
 
         {#    Hove color on navbar link#}
@@ -211,10 +206,357 @@
                 flex-direction: column-reverse;
             }
 
-            /*
-                        .form-sec {
-                            display: block;
-                        }*/
+        }
+
+        .project-sec {
+            text-align: center;
+            margin: .9rem auto 0 auto;
+            font-size: 2rem;
+            color: #363636;
+
+        }
+
+        .project-thumbnail {
+            object-fit: cover;
+        }
+
+        .overlay:hover {
+            zoom: normal;
+        }
+
+        .image .is-4by3 {
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+
+        .description-project {
+            height: 10rem;
+            overflow-y: auto;
+        }
+
+    </style>
+    <!--carousel start-->
+    <style>
+        .carousel {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel .carousel-container {
+            width: 100%;
+            position: relative;
+            border: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            left: -100%;
+            transform: translateX(100%);
+        }
+
+        .carousel .carousel-container .carousel-item {
+            display: block;
+            position: relative;
+            flex: 1 0 100%;
+        }
+
+        .carousel .carousel-container .carousel-item.has-background .is-background {
+            object-fit: cover;
+            object-position: center center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .carousel .carousel-container .carousel-item .title {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 1.5em;
+            margin: 0;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.6);
+            font-size: 0.75rem;
+        }
+
+        .carousel .carousel-navigation {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .carousel .carousel-navigation .carousel-nav-left,
+        .carousel .carousel-navigation .carousel-nav-right {
+            padding: 1em;
+        }
+
+        .carousel .carousel-navigation.is-centered {
+            justify-content: center;
+        }
+
+        .carousel .carousel-navigation.is-overlay {
+            align-items: center;
+            justify-content: space-between;
+            z-index: 20;
+        }
+
+        .carousel .carousel-navigation.is-overlay .carousel-nav-left,
+        .carousel .carousel-navigation.is-overlay .carousel-nav-right {
+            height: 2.2em;
+            width: 2em;
+            background: rgba(255, 255, 255, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #4a4a4a;
+            z-index: 99;
+        }
+
+        .carousel .carousel-navigation.is-overlay .carousel-nav-left:hover,
+        .carousel .carousel-navigation.is-overlay .carousel-nav-right:hover {
+            cursor: pointer;
+        }
+
+        .carousel .carousel-navigation.is-overlay .carousel-nav-right {
+            left: auto;
+            right: 0;
+        }
+
+        .carousel.is-reversing .carousel-container {
+            transform: translateX(-100%);
+        }
+
+        .carousel.is-reversing.is-2 .carousel-container {
+            transform: translateX(calc(-100% / 2));
+        }
+
+        .carousel.is-reversing.is-3 .carousel-container {
+            transform: translateX(calc(-100% / 3));
+        }
+
+        .carousel.is-reversing.is-4 .carousel-container {
+            transform: translateX(calc(-100% / 4));
+        }
+
+        .carousel.is-reversing.is-5 .carousel-container {
+            transform: translateX(calc(-100% / 5));
+        }
+
+        .carousel.is-2 .carousel-container {
+            left: calc(-100% / 2);
+            transform: translateX(calc(100% / 2));
+        }
+
+        .carousel.is-2 .carousel-container .carousel-item {
+            padding: 1em;
+            flex-basis: calc(100% / 2);
+        }
+
+        .carousel.is-3 .carousel-container {
+            left: calc(-100% / 3);
+            transform: translateX(calc(100% / 3));
+        }
+
+        .carousel.is-3 .carousel-container .carousel-item {
+            padding: 1em;
+            flex-basis: calc(100% / 3);
+        }
+
+        .carousel.is-4 .carousel-container {
+            left: calc(-100% / 4);
+            transform: translateX(calc(100% / 4));
+        }
+
+        .carousel.is-4 .carousel-container .carousel-item {
+            padding: 1em;
+            flex-basis: calc(100% / 4);
+        }
+
+        .carousel.is-5 .carousel-container {
+            left: calc(-100% / 5);
+            transform: translateX(calc(100% / 5));
+        }
+
+        .carousel.is-5 .carousel-container .carousel-item {
+            padding: 1em;
+            flex-basis: calc(100% / 3);
+        }
+
+        .hero.has-carousel {
+            position: relative;
+        }
+
+
+        .hero.has-carousel + .hero-body,
+        .hero.has-carousel + .hero-head,
+        .hero.has-carousel + .hero-footer {
+            z-index: 1;
+        }
+
+        .hero.has-carousel .hero-carousel {
+            display: flex;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height: auto;
+            border: none;
+            margin: auto;
+            padding: 0;
+            z-index: 0;
+        }
+
+        .hero-carousel {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-carousel .carousel-container {
+            width: 100%;
+            position: relative;
+            border: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            left: -100%;
+            transform: translateX(100%);
+        }
+
+        .hero-carousel .carousel-container .carousel-item {
+            display: block;
+            position: relative;
+            flex: 1 0 100%;
+        }
+
+        .hero-carousel .carousel-container .carousel-item.has-background .is-background {
+            object-fit: cover;
+            object-position: center center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .hero-carousel .carousel-container .carousel-item .title {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 1.5em;
+            margin: 0;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.6);
+            font-size: 0.75rem;
+        }
+
+        .hero-carousel .carousel-navigation {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .hero-carousel .carousel-navigation .carousel-nav-left,
+        .hero-carousel .carousel-navigation .carousel-nav-right {
+            padding: 1em;
+        }
+
+        .hero-carousel .carousel-navigation.is-centered {
+            justify-content: center;
+        }
+
+        .hero-carousel .carousel-navigation.is-overlay {
+            align-items: center;
+            justify-content: space-between;
+            z-index: 20;
+        }
+
+        .hero-carousel .carousel-navigation.is-overlay .carousel-nav-left,
+        .hero-carousel .carousel-navigation.is-overlay .carousel-nav-right {
+            height: 2.2em;
+            width: 2em;
+            background: rgba(255, 255, 255, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #4a4a4a;
+            z-index: 99;
+        }
+
+        .hero-carousel .carousel-navigation.is-overlay .carousel-nav-left:hover,
+        .hero-carousel .carousel-navigation.is-overlay .carousel-nav-right:hover {
+            cursor: pointer;
+        }
+
+        .hero-carousel .carousel-navigation.is-overlay .carousel-nav-right {
+            left: auto;
+            right: 0;
+        }
+
+        .hero-carousel.is-reversing .carousel-container {
+            transform: translateX(-100%);
+        }
+
+        .hero-carousel.is-reversing.is-2 .carousel-container {
+            transform: translateX(calc(-100% / 2));
+        }
+
+        .hero-carousel.is-reversing.is-3 .carousel-container {
+            transform: translateX(calc(-100% / 3));
+        }
+
+        .hero-carousel.is-reversing.is-4 .carousel-container {
+            transform: translateX(calc(-100% / 4));
+        }
+
+        .hero-carousel.is-reversing.is-5 .carousel-container {
+            transform: translateX(calc(-100% / 5));
+        }
+
+        .carousel.carousel-animate-slide.carousel-animated .carousel-container,
+        .hero-carousel.carousel-animate-slide.carousel-animated .carousel-container {
+            transform: none;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel.carousel-animate-fade .carousel-item,
+        .hero-carousel.carousel-animate-fade .carousel-item {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .carousel.carousel-animate-fade .carousel-item.is-active,
+        .hero-carousel.carousel-animate-fade .carousel-item.is-active {
+            opacity: 1;
+        }
+
+        .carousel.carousel-animate-fade .carousel-item:not(.is-active),
+        .hero-carousel.carousel-animate-fade .carousel-item:not(.is-active) {
+            opacity: 0;
+        }
+
+
+    </style>
+    {#    bulma overrides #}
+    <style>
+        .image.is-2by1 {
+            padding-top: 10%;
+        }
+
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            transition: .5s ease;
+            background-color: rgba(0, 0, 0, 0.23);
         }
 
 
@@ -245,36 +587,17 @@
                     Home
                 </a>
 
+                <a class="navbar-item" href="#projects">
+                    Projects
+                </a>
                 <a class="navbar-item">
-                    Blog
+                    Contact
                 </a>
 
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        More
-                    </a>
-
-                    <div class="navbar-dropdown">
-                        {#                        <a class="navbar-item" href="">#}
-                        {#                            About#}
-                        {#                        </a>#}
-                        {#                        <a class="navbar-item">#}
-                        {#                            Jobs#}
-                        {#                        </a>#}
-                        <a class="navbar-item" href="#contact">
-                            Contact
-                        </a>
-                        <hr class="navbar-divider">
-
-                    </div>
-                </div>
                 <div class="navbar-item">
                     <div class="buttons">
-                        {#                        <a class="button is-primary">#}
-                        {#                            <strong>Sign up</strong>#}
-                        {#                        </a>#}
                         <a class="button is-light">
-                            Wait for more
+                            Customer Login
                         </a>
                     </div>
                 </div>
@@ -313,89 +636,104 @@
     </div>
 </header>
 <main>
-    <section class="section">
-        <div class="container">
-{#            <div class="columns">#}
-{#                <div class="column">#}
-{#                    <img class="card_extra" src="{% static 'img/site1.png' %}" alt="">#}
-{#                </div>#}
-{#                <div class="column">#}
-{#                    <div class="card card_extra">#}
-{#                        <div class="card-content">#}
-{#                            <div class="media">#}
-{#                                <div class="media-left">#}
-{#                                    <figure class="image is-48x48">#}
-{#                                        <img src="{% static 'img/cloud.png' %}"#}
-{#                                             alt="Cloud">#}
-{#                                    </figure>#}
-{#                                </div>#}
-{#                                <div class="media-content">#}
-{#                                    <p class="title is-4">Project : <b>Its My Design</b></p>#}
-{#                                    <p class="subtitle is-6">Cms of design prospect</p>#}
-{#                                </div>#}
-{#                            </div>#}
-{##}
-{#                            <div class="content">#}
-{#                                Its My Design is one of the leading company in design industry.Providing high quality#}
-{#                                solution for your brand.#}
-{##}
-{#                                <a href="http://itsmydesign.in"><b>@itsmydesign.in</b></a>.#}
-{#                                <a href="">#cms</a> <a href="#">#responsive</a>#}
-{#                                <a href="">#django</a> <a href="#"></a>#}
-{#                                <br>#}
-{#                                <time datetime="2016-1-1"><b>14 Oct 2018 - (Current)</b></time>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-        </div>
-    </section>
-    <section class="section">
-        <div class="container">
-{#            <div class="columns flex-rev">#}
-{#                <div class="column">#}
-{#                    <div class="card card_extra">#}
-{#                        <div class="card-content">#}
-{#                            <div class="media">#}
-{#                                <div class="media-left">#}
-{#                                    <figure class="image is-48x48">#}
-{#                                        <img src="{% static 'img/mobile.png' %}"#}
-{#                                             alt="Cloud">#}
-{#                                    </figure>#}
-{#                                </div>#}
-{#                                <div class="media-content">#}
-{#                                    <p class="title is-4">Project : <b>THE CORIANDER LEAF</b></p>#}
-{#                                    <p class="subtitle is-6">The food app</p>#}
-{#                                </div>#}
-{#                            </div>#}
-{##}
-{#                            <div class="content">#}
-{#                                The Coriander leaf, your new premium food restro bar. We know you're always busy. No#}
-{#                                time for cooking.#}
-{#                                <a href="http://www.thecorianderleaf.in/"><b>@store.corianderLeaf.in</b></a>.#}
-{#                                <a href="">#pwa_app</a> <a href="#"></a>#}
-{#                                <a href="">#js</a> <a href="#"></a>#}
-{#                                <br>#}
-{#                                <time datetime="2016-1-1"><b>Nov 2018 - (Current)</b></time>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="column">#}
-{#                    <img class="card_extra" src="{% static 'img/site2.png' %}" alt="">#}
-{#                </div>#}
-{##}
-{#            </div>#}
-        </div>
-    </section>
-    <section class="section form-sec">
+    <div>
+        <div class="project-sec" id="projects">Our Projects</div>
+        <div class='carousel is-5 carousel-animated carousel-animate-slide'>
+            <div class='carousel-container'>
 
 
-        <div class="columns">
-            <div class="column">
+                {% for project in project_detail %}
+                    {% if  forloop.first %}
+                        <div class='carousel-item is-active'>
+                            <figure class="image is-2by1">
+                                <div class="card">
+                                    <div class="card-image">
+                                        <figure class="image is-4by3">
+                                            <img src="{{ project.thumbnail.url }}"
+                                                 alt="Placeholder image" class="project-thumbnail">
+                                            <div class="overlay">
+                                                <div class="text"></div>
+                                            </div>
+                                        </figure>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="media">
+                                            <div class="media-content">
+                                                <p class="has-text-weight-bold is-4">{{ project.title }}</p>
+                                                <p class="is-bold is-6">{{ project.sub_title }}</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="content">
+                                            <div class="description-project">
+                                                {{ project.description }}
+                                            </div>
+                                            <br>
+
+
+                                            <br>
+                                            <time datetime="2016-1-1">{{ project.period_start }}</time>
+                                        </div>
+                                    </div>
+                                </div>
+                            </figure>
+                        </div>
+                    {% else %}
+                        <div class='carousel-item'>
+                            <figure class="image is-2by1">
+                                <div class="card">
+                                    <div class="card-image">
+                                        <figure class="image is-4by3">
+                                            <img src="{{ project.thumbnail.url }}"
+                                                 alt="Placeholder image" class="project-thumbnail">
+                                            <div class="overlay">
+                                                <div class="text"></div>
+                                            </div>
+                                        </figure>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="media">
+                                            <div class="media-content">
+                                                <p class="has-text-weight-bold is-4">{{ project.title }}</p>
+                                                <p class="is-bold is-6">{{ project.sub_title }}</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="content">
+                                            <div class="description-project">
+                                                {{ project.description }}
+                                            </div>
+                                            <br>
+
+                                            <br>
+                                            <time datetime="2016-1-1">{{ project.period_start }}</time>
+                                        </div>
+                                    </div>
+                                </div>
+                            </figure>
+                        </div>
+                    {% endif %}
+
+
+                {% endfor %}
+
 
             </div>
+            <div class="carousel-navigation is-centered">
+                <div class="carousel-nav-left">
+                    <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                </div>
+                <div class="carousel-nav-right">
+                    <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="section form-sec">
+        <div class="columns">
+            <div class="column"></div>
             <div class="column">
                 <div class="is-size-3"><b>Let us know what you think</b></div>
                 <div class="field">
@@ -412,13 +750,8 @@
                 </div>
                 <a class="button is-link" style="float: right">Submit</a>
             </div>
-
-
-            <div class="column">
-
-            </div>
+            <div class="column"></div>
         </div>
-
     </section>
 </main>
 <footer class="footer">
@@ -462,7 +795,137 @@
     });
 </script>
 
+<script>
+    var $jscomp = {scope: {}};
+    $jscomp.defineProperty = "function" == typeof Object.defineProperties ? Object.defineProperty : function (a, b, c) {
+        if (c.get || c.set) throw new TypeError("ES3 does not support getters and setters.");
+        a != Array.prototype && a != Object.prototype && (a[b] = c.value)
+    };
+    $jscomp.getGlobal = function (a) {
+        return "undefined" != typeof window && window === a ? a : "undefined" != typeof global && null != global ? global : a
+    };
+    $jscomp.global = $jscomp.getGlobal(this);
+    $jscomp.SYMBOL_PREFIX = "jscomp_symbol_";
+    $jscomp.initSymbol = function () {
+        $jscomp.initSymbol = function () {
+        };
+        $jscomp.global.Symbol || ($jscomp.global.Symbol = $jscomp.Symbol)
+    };
+    $jscomp.symbolCounter_ = 0;
+    $jscomp.Symbol = function (a) {
+        return $jscomp.SYMBOL_PREFIX + (a || "") + $jscomp.symbolCounter_++
+    };
+    $jscomp.initSymbolIterator = function () {
+        $jscomp.initSymbol();
+        var a = $jscomp.global.Symbol.iterator;
+        a || (a = $jscomp.global.Symbol.iterator = $jscomp.global.Symbol("iterator"));
+        "function" != typeof Array.prototype[a] && $jscomp.defineProperty(Array.prototype, a, {
+            configurable: !0,
+            writable: !0,
+            value: function () {
+                return $jscomp.arrayIterator(this)
+            }
+        });
+        $jscomp.initSymbolIterator = function () {
+        }
+    };
+    $jscomp.arrayIterator = function (a) {
+        var b = 0;
+        return $jscomp.iteratorPrototype(function () {
+            return b < a.length ? {done: !1, value: a[b++]} : {done: !0}
+        })
+    };
+    $jscomp.iteratorPrototype = function (a) {
+        $jscomp.initSymbolIterator();
+        a = {next: a};
+        a[$jscomp.global.Symbol.iterator] = function () {
+            return this
+        };
+        return a
+    };
+    $jscomp.polyfill = function (a, b, c, d) {
+        if (b) {
+            c = $jscomp.global;
+            a = a.split(".");
+            for (d = 0; d < a.length - 1; d++) {
+                var f = a[d];
+                f in c || (c[f] = {});
+                c = c[f]
+            }
+            a = a[a.length - 1];
+            d = c[a];
+            b = b(d);
+            b != d && null != b && $jscomp.defineProperty(c, a, {configurable: !0, writable: !0, value: b})
+        }
+    };
+    $jscomp.polyfill("Array.from", function (a) {
+        return a ? a : function (a, c, d) {
+            $jscomp.initSymbolIterator();
+            c = null != c ? c : function (a) {
+                return a
+            };
+            var b = [], e = a[Symbol.iterator];
+            if ("function" == typeof e) for (a = e.call(a); !(e = a.next()).done;) b.push(c.call(d, e.value)); else for (var e = a.length, g = 0; g < e; g++) b.push(c.call(d, a[g]));
+            return b
+        }
+    }, "es6-impl", "es3");
+    var MOUSE_EVENTS = ["click", "touchstart"], Carousel = function (a) {
+        this.element = a;
+        this.init()
+    };
+    Carousel.prototype.init = function () {
+        var a = this;
+        this.items = Array.from(this.element.querySelectorAll(".carousel-item"));
+        MOUSE_EVENTS.forEach(function (b) {
+            var c = a.element.querySelector(".carousel-nav-left"), d = a.element.querySelector(".carousel-nav-right");
+            c && c.addEventListener(b, function (b) {
+                b.preventDefault();
+                a.move("previous");
+                a.autoplayInterval && (clearInterval(a.autoplayInterval), a.autoPlay(a.element.dataset.delay || 5E3))
+            }, !1);
+            d && d.addEventListener(b, function (b) {
+                b.preventDefault();
+                a.move("next");
+                a.autoplayInterval &&
+                (clearInterval(a.autoplayInterval), a.autoPlay(a.element.dataset.delay || 5E3))
+            }, !1)
+        });
+        this.initOrder();
+        this.element.dataset.autoplay && "true" == this.element.dataset.autoplay && this.autoPlay(this.element.dataset.delay || 5E3)
+    };
+    Carousel.prototype.initOrder = function () {
+        var a = this.element.querySelector(".carousel-item.is-active");
+        (a = this.items.indexOf(a)) ? this.items.push(this.items.splice(0, a)) : this.items.unshift(this.items.pop());
+        this.setOrder()
+    };
+    Carousel.prototype.setOrder = function () {
+        this.items.forEach(function (a, b) {
+            a.style["z-index"] = 1 !== b ? "0" : "1";
+            a.style.order = b
+        })
+    };
+    Carousel.prototype.move = function (a) {
+        a = void 0 === a ? "next" : a;
+        var b = this;
+        this.items.length && (this.element.querySelector(".carousel-item.is-active").classList.remove("is-active"), "previous" === a ? (this.items.unshift(this.items.pop()), this.element.classList.add("is-reversing")) : (this.items.push(this.items.shift()), this.element.classList.remove("is-reversing")), (1 <= this.items.length ? this.items[1] : this.items[0]).classList.add("is-active"), this.setOrder(), this.element.classList.toggle("carousel-animated"), setTimeout(function () {
+                b.element.classList.toggle("carousel-animated")
+            },
+            50))
+    };
+    Carousel.prototype.autoPlay = function (a) {
+        var b = this;
+        this.autoplayInterval = setInterval(function () {
+            b.move("next")
+        }, void 0 === a ? 5E3 : a)
+    };
+    document.addEventListener("DOMContentLoaded", function () {
+        var a = document.querySelectorAll(".carousel, .hero-carousel");
+        [].forEach.call(a, function (a) {
+            new Carousel(a)
+        })
+    });
 
+</script>
 <script src="{% static 'js/particles.min.js' %}"></script>
 <script src="{% static 'js/app.js' %}"></script>
 
