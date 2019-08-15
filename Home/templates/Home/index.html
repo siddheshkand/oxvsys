@@ -119,6 +119,7 @@
                 display: none;
             }
 
+
             #developer-image {
                 display: none;
             }
@@ -538,7 +539,12 @@
             opacity: 0;
         }
 
-
+        @media screen and (max-width: 1088px) {
+            .carousel-item {
+                flex-basis: calc(100%) !important;
+                left: 4.5rem;
+            }
+        }
     </style>
     {#    bulma overrides #}
     <style>
