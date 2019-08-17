@@ -12,6 +12,7 @@ class ProjectDetail(models.Model):
     period_end = models.DateTimeField()
     tag = TaggableManager()
     position = models.IntegerField(default=0)
+    url = models.CharField(max_length=500, null=True, blank=True, default='')
 
     # https://djangosnippets.org/snippets/10638/
     # ^ to solve upload problem
@@ -24,5 +25,3 @@ class CustomerDetail(models.Model):
     contact_nos = models.PositiveIntegerField()
     message = models.TextField()
     requirements = models.TextField()
-
-

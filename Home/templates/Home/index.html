@@ -215,7 +215,6 @@
             margin: .9rem auto 0 auto;
             font-size: 2rem;
             color: #363636;
-
         }
 
         .project-thumbnail {
@@ -238,6 +237,38 @@
         .description-project {
             height: 10rem;
             overflow-y: auto;
+        }
+
+        .my_btn, .my_btn:hover {
+            background: #0f81cc;
+            padding: 5px;
+            color: #fff;
+        }
+
+        .my_btn_2 {
+            background: #cd0930;
+            padding: 5px;
+            color: #fff;
+        }
+
+        .feature_col {
+            padding: 2rem 5rem 2rem 5rem;
+        }
+
+        .feature_title {
+            text-align: center;
+            margin: .9rem auto 0 auto;
+            font-size: 1.3rem;
+            color: #363636;
+        }
+
+        .feature_icon {
+            text-align: center;
+        }
+
+        .feature_desc {
+            text-align: center;
+            color: #4a4a4a;
         }
     </style>
     <!--carousel start-->
@@ -587,7 +618,7 @@
             <button class="modal-close" onclick="close_modal()"></button>
         </div>
     {% endif %}
-    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" >
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
                 <img alt="" src="{% static 'img/fin_text.svg' %}" width="112" height="28">
@@ -601,7 +632,7 @@
         </div>
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-end">
-                <a class="navbar-item">
+                <a class="navbar-item" href="#particles-js">
                     Home
                 </a>
                 <a class="navbar-item" href="#projects">
@@ -613,7 +644,7 @@
                 <div class="navbar-item">
                     <div class="buttons">
                         <a class="button is-light">
-                            Customer Login
+                            New Site coming soon
                         </a>
                     </div>
                 </div>
@@ -621,12 +652,12 @@
         </div>
     </nav>
 
-    <div class="header-content">
+    <div class="header-content" id="home">
         <div class="container is-fluid">
             <div class="columns">
                 <div class="column">
                     <h1 class="title is-1">
-                        We are oxvsys.
+                        We are oxvsys<sub style="font-size: small">A Small Startup, big dreams.</sub>.
                     </h1>
                     <h1 class="subtitle is-4">
                         We create <b>Autonomous</b> infrastructure. <br>
@@ -653,9 +684,32 @@
 </header>
 <main>
     <div id="about">
+        <div class="columns">
+            <div class="column feature_col">
+                <div class="feature_icon"><img src="{% static 'icons/icons8-binoculars-64.png' %}" alt=""></div>
+                <div class="feature_title">Search ERP</div>
+                <div class="feature_desc">We make use of latest technology to keep your ERP blazing fast</div>
+            </div>
+            <div class="column feature_col">
 
+                <div class="feature_icon"><img src="{% static 'icons/icons8-mobile-64.png' %}" alt=""></div>
+                <div class="feature_title">Mobile first</div>
+                <div class="feature_desc">Design which are inspired to target mobile audience</div>
+            </div>
+            <div class="column feature_col">
+                <div class="feature_icon"><img src="{% static 'icons/icons8-box-64.png' %}" alt=""></div>
+                <div class="feature_title">Customize</div>
+                <div class="feature_desc">We provide customized solution to your problem out of the box</div>
+            </div>
+            <div class="column feature_col">
+
+                <div class="feature_icon"><img src="{% static 'icons/icons8-settings-64.png' %}" alt=""></div>
+                <div class="feature_title">Engineering</div>
+                <div class="feature_desc">Top class engineering process to make your SW 100% reliable</div>
+            </div>
+        </div>
     </div>
-    <div>
+    <div style="background: #e7e7e7;">
         <div class="project-sec" id="projects">Our Projects</div>
         <div class='carousel is-5 carousel-animated carousel-animate-slide'>
             <div class='carousel-container'>
@@ -688,6 +742,11 @@
                                             <br>
                                             <br>
                                             <time datetime="2016-1-1">{{ project.period_start }}</time>
+                                            {% if project.url %}
+                                                <a href="{{ project.url }}" class="my_btn">Visit</a>
+                                            {% else %}
+                                                <a href="" class="my_btn_2">Private</a>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -722,6 +781,11 @@
 
                                             <br>
                                             <time datetime="2016-1-1">{{ project.period_start }}</time>
+                                            {% if project.url %}
+                                                <a href="{{ project.url }}" class="my_btn"> Visit</a>
+                                            {% else %}
+                                                <a href="" class="my_btn_2">Private</a>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -765,7 +829,7 @@
         </div>
     </section>
 </main>
-<footer class="footer">
+<footer class="footer" style="background: #e7e7e7">
     <div class="content has-text-centered">
         <p>
             <strong>Oxvsys</strong>
