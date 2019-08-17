@@ -618,7 +618,7 @@
             <button class="modal-close" onclick="close_modal()"></button>
         </div>
     {% endif %}
-    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" >
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
                 <img alt="" src="{% static 'img/fin_text.svg' %}" width="112" height="28">
@@ -743,7 +743,7 @@
                                             <br>
                                             <time datetime="2016-1-1">{{ project.period_start }}</time>
                                             {% if project.url %}
-                                                <a href="{{ project.url }}" class="my_btn">Visit</a>
+                                                <a href="{{ project.url }}" class="my_btn" target="_blank">Visit</a>
                                             {% else %}
                                                 <a href="" class="my_btn_2">Private</a>
                                             {% endif %}
@@ -782,7 +782,7 @@
                                             <br>
                                             <time datetime="2016-1-1">{{ project.period_start }}</time>
                                             {% if project.url %}
-                                                <a href="{{ project.url }}" class="my_btn"> Visit</a>
+                                                <a href="{{ project.url }}" class="my_btn" target="_blank"> Visit</a>
                                             {% else %}
                                                 <a href="" class="my_btn_2">Private</a>
                                             {% endif %}
