@@ -17,3 +17,12 @@ class ProjectDetail(models.Model):
     # ^ to solve upload problem
     def __str__(self):
         return self.title + self.sub_title
+
+
+class CustomerDetail(models.Model):
+    email = models.EmailField()
+    contact_nos = models.PositiveIntegerField()
+    message = models.TextField()
+    requirements = models.TextField()
+
+

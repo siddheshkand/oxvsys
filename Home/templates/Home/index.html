@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -116,7 +117,7 @@
         {#for mobile screen #}
         @media screen and (max-width: 1088px) {
             .form-sec {
-                display: none;
+            {#display: none;#}
             }
 
 
@@ -238,7 +239,6 @@
             height: 10rem;
             overflow-y: auto;
         }
-
     </style>
     <!--carousel start-->
     <style>
@@ -561,8 +561,6 @@
     </style>
     {#    bulma overrides #}
     <style>
-
-
         .overlay {
             position: absolute;
             top: 0;
@@ -578,15 +576,22 @@
 
     </style>
 </head>
-
 <body class="">
 <header class="custom-header" id="particles-js">
+    {% if message %}
+        <div class="modal is-active" id="close_this_modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <h1 style="color: lawngreen;font-size: 2rem;font-weight: bolder">{{ message }}</h1>
+            </div>
+            <button class="modal-close" onclick="close_modal()"></button>
+        </div>
+    {% endif %}
     <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
                 <img alt="" src="{% static 'img/fin_text.svg' %}" width="112" height="28">
             </a>
-
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
                data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
@@ -594,22 +599,17 @@
                 <span aria-hidden="true"></span>
             </a>
         </div>
-
         <div id="navbarBasicExample" class="navbar-menu">
-
-
             <div class="navbar-end">
                 <a class="navbar-item">
                     Home
                 </a>
-
                 <a class="navbar-item" href="#projects">
                     Projects
                 </a>
-                <a class="navbar-item">
+                <a class="navbar-item" href="#contact">
                     Contact
                 </a>
-
                 <div class="navbar-item">
                     <div class="buttons">
                         <a class="button is-light">
@@ -652,12 +652,13 @@
     </div>
 </header>
 <main>
+    <div id="about">
+
+    </div>
     <div>
         <div class="project-sec" id="projects">Our Projects</div>
         <div class='carousel is-5 carousel-animated carousel-animate-slide'>
             <div class='carousel-container'>
-
-
                 {% for project in project_detail %}
                     {% if  forloop.first %}
                         <div class='carousel-item is-active'>
@@ -685,8 +686,6 @@
                                                 {{ project.description }}
                                             </div>
                                             <br>
-
-
                                             <br>
                                             <time datetime="2016-1-1">{{ project.period_start }}</time>
                                         </div>
@@ -729,11 +728,7 @@
                             </figure>
                         </div>
                     {% endif %}
-
-
                 {% endfor %}
-
-
             </div>
             <div class="carousel-navigation is-centered">
                 <div class="carousel-nav-left">
@@ -745,26 +740,26 @@
             </div>
         </div>
     </div>
-
-
-    <section class="section form-sec">
+    <section class="section form-sec" id="contact">
         <div class="columns">
             <div class="column"></div>
             <div class="column">
-                <div class="is-size-3"><b>Let us know what you think</b></div>
-                <div class="field">
-                    <label class="label">Email</label>
-                    <div class="control">
-                        <input class="input" type="email" placeholder="Text input">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">Message</label>
-                    <div class="control">
-                        <textarea class="textarea" placeholder="Textarea"></textarea>
-                    </div>
-                </div>
-                <a class="button is-link" style="float: right">Submit</a>
+
+                <h1 style="text-align: center;margin: .9rem auto 0 auto;font-size: 2rem;color: #363636;">Contact
+                    us</h1>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    {% for feild in form %}
+                        <div class="field">
+                            <h1>{{ feild.error }}</h1>
+                            <label class="label" style="display: inline;">{{ feild.label }}</label>
+                            <div class="control" style="display: inline">
+                                {{ feild|add_class:'input' }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <input type="submit" class="button is-link" style="float: right" value="Submit">
+                </form>
             </div>
             <div class="column"></div>
         </div>
@@ -784,8 +779,7 @@
 </footer>
 </body>
 
-<script
-        src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
 {# Script for toogle of navbar#}
 <script>
     $(document).ready(function () {
@@ -800,7 +794,6 @@
         });
     });
 </script>
-
 {# Script for scroll to change nav bar color #}
 <script>
     $(function () {
@@ -810,7 +803,6 @@
         });
     });
 </script>
-
 <script>
     var $jscomp = {scope: {}};
     $jscomp.defineProperty = "function" == typeof Object.defineProperties ? Object.defineProperty : function (a, b, c) {
@@ -944,7 +936,11 @@
 </script>
 <script src="{% static 'js/particles.min.js' %}"></script>
 <script src="{% static 'js/app.js' %}"></script>
+<script>
 
+    function close_modal() {
+        let modal = document.getElementById('close_this_modal');
+        modal.classList.remove('is-active');
+    }
+</script>
 </html>
-
-

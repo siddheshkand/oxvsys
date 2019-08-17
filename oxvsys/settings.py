@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'Home',
     # Third party
     'taggit',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
