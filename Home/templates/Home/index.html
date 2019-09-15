@@ -745,7 +745,7 @@
                                             </div>
                                             <br>
                                             <br>
-                                            <time datetime="2016-1-1">{{ project.period_start }}</time>
+                                            <time datetime="2016-1-1">{{ project.period_start|date:'Y-M' }}</time>
                                             {% if project.url %}
                                                 <a href="{{ project.url }}" class="my_btn" target="_blank">Visit</a>
                                             {% else %}
@@ -784,7 +784,7 @@
                                             <br>
 
                                             <br>
-                                            <time datetime="2016-1-1">{{ project.period_start }}</time>
+                                            <time datetime="2016-1-1">{{ project.period_start|date:'Y-M' }}</time>
                                             {% if project.url %}
                                                 <a href="{{ project.url }}" class="my_btn" target="_blank"> Visit</a>
                                             {% else %}
