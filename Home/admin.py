@@ -37,4 +37,4 @@ class CustomerAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.ProjectDetail, ProjectAdmin)
-admin.site.register(models.CustomerDetail,CustomerAdmin)
+admin.site.register(models.CustomerDetail, CustomerAdmin)
