@@ -27,5 +27,14 @@ class ProjectAdmin(admin.ModelAdmin):
     )
 
 
+class CustomerAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'contact_nos',
+        'message',
+        'requirements',
+    )
+
+
 admin.site.register(models.ProjectDetail, ProjectAdmin)
-admin.site.register(models.CustomerDetail)
+admin.site.register(models.CustomerDetail,CustomerAdmin)
