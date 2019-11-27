@@ -29,7 +29,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
 class CustomerAdmin(admin.ModelAdmin):
     list_display = (
-        'name',
+        'email',
         'contact_nos',
         'message',
         'requirements',
