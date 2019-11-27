@@ -114,8 +114,19 @@
             color: white;
         }
 
+        .card-image {
+            width: 100%;
+            display: inline-block;
+            position: relative;
+            height: 200px;
+        }
+
         {#for mobile screen #}
         @media screen and (max-width: 1088px) {
+            .carousel.is-5 .carousel-container .carousel-item {
+                padding: .2em !important;
+            }
+
             .image.is-4by3 {
                 padding: 20%;
             }
@@ -222,7 +233,12 @@
         }
 
         .project-thumbnail {
+            height: 200px;
             object-fit: cover;
+        }
+
+        .overlay {
+
         }
 
         .overlay:hover {
@@ -230,8 +246,7 @@
         }
 
         .image .is-4by3 {
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2;
+        {#background: rgba(0, 0, 0, 0.8);#} z-index: 2;
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -273,6 +288,10 @@
         .feature_desc {
             text-align: center;
             color: #4a4a4a;
+        }
+
+        image.is-2by1 img, .image.is-2by3 img, .image.is-3by1 img, .image.is-3by2 img, .image.is-3by4 img, .image.is-3by5 img, .image.is-4by3 img {
+            height: 200px;
         }
     </style>
     <!--carousel start-->
@@ -326,7 +345,7 @@
 
         .carousel .carousel-navigation .carousel-nav-left,
         .carousel .carousel-navigation .carousel-nav-right {
-            padding: 1em;
+            padding: .5em;
         }
 
         .carousel .carousel-navigation.is-centered {
@@ -602,7 +621,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 100%;
+            height: 200px;
             width: 100%;
             transition: .5s ease;
             background-color: rgba(0, 0, 0, 0.23);
@@ -639,8 +658,8 @@
                 <a class="navbar-item" href="#particles-js">
                     Home
                 </a>
-                <a class="navbar-item" href="#projects">
-                    Projects
+                <a class="navbar-item" href="#product">
+                    Product
                 </a>
                 <a class="navbar-item" href="#contact">
                     Contact
@@ -690,31 +709,33 @@
     <div id="about">
         <div class="columns">
             <div class="column feature_col">
-                <div class="feature_icon"><img src="{% static 'icons/icons8-binoculars-64.png' %}" alt=""></div>
-                <div class="feature_title">Search ERP</div>
-                <div class="feature_desc">We make use of latest technology to keep your ERP blazing fast</div>
+                <div class="feature_icon"><img src="{% static 'icons/ai.png' %}" alt=""></div>
+                <div class="feature_title">AI and ML</div>
+                <div class="feature_desc">Using state of the art technology, like CNN, SDD and YOLO in our model. We
+                    make sure we are always ahead of market.
+                </div>
             </div>
             <div class="column feature_col">
 
-                <div class="feature_icon"><img src="{% static 'icons/icons8-mobile-64.png' %}" alt=""></div>
-                <div class="feature_title">Mobile first</div>
-                <div class="feature_desc">Design which are inspired to target mobile audience</div>
+                <div class="feature_icon"><img src="{% static 'icons/storage.png' %}" alt=""></div>
+                <div class="feature_title">Reliable Storage</div>
+                <div class="feature_desc">SVN and simple public ledger based block chain to store all current and historical data.</div>
             </div>
             <div class="column feature_col">
-                <div class="feature_icon"><img src="{% static 'icons/icons8-box-64.png' %}" alt=""></div>
-                <div class="feature_title">Customize</div>
-                <div class="feature_desc">We provide customized solution to your problem out of the box</div>
+                <div class="feature_icon"><img src="{% static 'icons/mobility.png' %}" alt=""></div>
+                <div class="feature_title">Mobility</div>
+                <div class="feature_desc">System designed that keep mobility in mind in this mobile and internet connected world.</div>
             </div>
             <div class="column feature_col">
 
-                <div class="feature_icon"><img src="{% static 'icons/icons8-settings-64.png' %}" alt=""></div>
-                <div class="feature_title">Engineering</div>
-                <div class="feature_desc">Top class engineering process to make your Software 100% reliable</div>
+                <div class="feature_icon"><img src="{% static 'icons/secure.png' %}" alt=""></div>
+                <div class="feature_title">Security</div>
+                <div class="feature_desc">We employee best security practice to store your psswords and all sensetive data,even dont have acess to your data.</div>
             </div>
         </div>
     </div>
     <div style="background: #e7e7e7;">
-        <div class="project-sec" id="projects">Our Projects</div>
+        <div class="project-sec" id="product">Our Product</div>
         <div class='carousel is-5 carousel-animated carousel-animate-slide'>
             <div class='carousel-container'>
                 {% for project in project_detail %}
@@ -739,15 +760,16 @@
                                             </div>
                                         </div>
 
-                                        <div class="content">
-                                            <div class="description-project">
-                                                {{ project.description }}
+                                        <div class="content" style="margin-bottom: 10px">
+                                            <div class="description-project" title="{{ project.description }}">
+                                                {{ project.description|slice:":100" }}...
                                             </div>
-                                            <br>
-                                            <br>
+
+
                                             <time datetime="2016-1-1">{{ project.period_start|date:'Y-M' }}</time>
-                                            {% if project.url %}
-                                                <a href="{{ project.url }}" class="my_btn" target="_blank">Visit</a>
+                                            {% if project.pdf %}
+                                                <a href="{{ project.pdf.url }}" class="my_btn" target="_blank">See
+                                                    Report</a>
                                             {% else %}
                                                 <a href="" class="my_btn_2">Private</a>
                                             {% endif %}
@@ -778,15 +800,14 @@
                                         </div>
 
                                         <div class="content">
-                                            <div class="description-project">
-                                                {{ project.description }}
+                                            <div class="description-project" style="margin-bottom: 10px">
+                                                {{ project.description|slice:":100" }}...
                                             </div>
-                                            <br>
 
-                                            <br>
                                             <time datetime="2016-1-1">{{ project.period_start|date:'Y-M' }}</time>
-                                            {% if project.url %}
-                                                <a href="{{ project.url }}" class="my_btn" target="_blank"> Visit</a>
+                                            {% if project.pdf %}
+                                                <a href="{{ project.pdf.url }}" class="my_btn" target="_blank">See
+                                                    Report</a>
                                             {% else %}
                                                 <a href="" class="my_btn_2">Private</a>
                                             {% endif %}
@@ -842,9 +863,18 @@
         </p>
         <div class="container" id="contact">
             <div class=""><img src="{% static 'img/mail.png' %}" alt="" width="50px"></div>
-            <div class=""><a href="mailto:customer.oxvsys@gmail.com">customer@oxvsys.com</a></div>
-            <div class=""><a href="tel:9767606061"><span
-                    style="color: #0f81cc;font-size: 2rem;">📱</span>9767-6060-61</a></div>
+            <div class="">
+                <a href="mailto:customer.oxvsys@gmail.com">
+
+                    <p style="margin-bottom: 5px;display: inline-block;">customer.oxvsys@gmail.com</p>
+                </a>
+            </div>
+            <div class="">
+                <a href="tel:9767606061">
+
+                    <p style="margin-bottom: 5px;display: inline-block;">9767-6060-61</p>
+                </a>
+            </div>
         </div>
     </div>
 </footer>

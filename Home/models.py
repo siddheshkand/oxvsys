@@ -13,6 +13,8 @@ class ProjectDetail(models.Model):
     tag = TaggableManager()
     position = models.IntegerField(default=0)
     url = models.CharField(max_length=500, null=True, blank=True, default='')
+    pdf = models.FileField(null=True, blank=True, default='icons/email.png')
+    show = models.BooleanField(default=True, null=True, blank=True)
 
     # https://djangosnippets.org/snippets/10638/
     # ^ to solve upload problem
